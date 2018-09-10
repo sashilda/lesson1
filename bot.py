@@ -1,9 +1,17 @@
-from telegram.ext import Updater
+from telegram.ext import Updater, CommandHandler      
+from os import environ
 
-API_KEY = '688721336:AAFy8ftMA6UZlFumVUSncQGMm79NAuHGJbA'
+# Run in cmd line "source secrets.txt" before running
+API_KEY = environ.get('API_KEY') 
 
+def greet_user(bot, update):
+    print('Вызван /start')
+    
 def main():
     mybot = Updater(API_KEY)
+    mydisp = mybot.dispatcher
+    mydisp.add_handler(CommandHandler("start", greet_user))
+
     mybot.start_polling()
     mybot.idle()
        
