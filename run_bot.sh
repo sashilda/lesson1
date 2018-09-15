@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source secrets.txt
-python bot.py
+API_KEY=$API_KEY python bot.py
